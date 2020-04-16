@@ -19,7 +19,7 @@ def main():
                 amount = int(input("Enter the amount of words from the Hebrew language you would like to include: "))
             except ValueError:
                 print("Invalid amount entered. Proceeding with default(100000).")
-            create_words_document(amount)
+            create_words_document(amount, "~/Data/wikipedia-he-html")
 
         matches = {}
 

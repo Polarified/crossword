@@ -26,9 +26,9 @@ def passes_criteria(word, freq):
     return True
 
 
-def create_words_document(amount=100000):
+def create_words_document(amount, path):
     all_files = []
-    for root, _, filenames in os.walk(u'wikipedia-he-html'):
+    for root, _, filenames in os.walk(path):
         for filename in filenames:
             if INVALID_FILENAME_PATTERN.search(filename):
                 continue
