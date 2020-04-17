@@ -8,6 +8,10 @@ Date: 15.4.2020
 from itertools import permutations
 
 
+def purify_phrases(lexicon_path):
+    pass
+
+
 def jumble(vocabulary, word, matches):
     """
 

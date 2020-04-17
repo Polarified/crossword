@@ -5,6 +5,7 @@ Author: I.C.
 Date: 15.04.2020
 """
 
+import pickle
 from bs4 import BeautifulSoup
 from collections import Counter
 import re
@@ -26,9 +27,9 @@ def passes_criteria(word, freq):
     return True
 
 
-def create_words_document(amount, path):
+def create_words_document(path_to_htmls, path_to_words_file):
     all_files = []
-    for root, _, filenames in os.walk(path):
+    for root, _, filenames in os.walk(path_to_htmls):
         for filename in filenames:
             if INVALID_FILENAME_PATTERN.search(filename):
                 continue
@@ -57,8 +58,7 @@ def create_words_document(amount, path):
                     else:
                         freq[word[1:]] += 1
 
-    print("Total words found: ", len(freq))
-    with open("words.txt", "wb") as words_file:
-        words_file.write(u"\n".join("%s" % word for (word, frequency) in freq.most_common(amount)).encode('utf8'))
+    with open(path_to_words_file, "wb") as words_file:
+        pickle.dump(freq, words_file)
 
     return freq
