@@ -75,8 +75,9 @@ def scrape(origin_url, path_to_definitions, path_to_synonyms):
             word_html = urlopen(word_url)
             word_soup = BeautifulSoup(word_html, 'html.parser')
             divider = word_soup.find("div", class_="mw-parser-output")
-            get_definitions(word, divider)
-            get_synonyms(word, divider)
+            if len(word) <= 10:
+                get_definitions(word, divider)
+                get_synonyms(word, divider)
 
         page_links = origin_soup.find("div", class_="mw-allpages-nav")
         nav_links = page_links.find_all('a')
